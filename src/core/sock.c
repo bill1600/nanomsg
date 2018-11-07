@@ -38,6 +38,7 @@
 #include "../utils/msg.h"
 
 #include <limits.h>
+#include <stdio.h>
 
 /*  These bits specify whether individual efds are signalled or not at
     the moment. Storing this information allows us to avoid redundant signalling
@@ -181,6 +182,7 @@ void nn_sock_stopped (struct nn_sock *self)
     threads waiting to recv or send data. */
 void nn_sock_stop (struct nn_sock *self)
 {
+    printf ("Nano: nn_sock_stop\n");
     nn_ctx_enter (&self->ctx);
     nn_fsm_stop (&self->fsm);
     nn_ctx_leave (&self->ctx);

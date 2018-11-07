@@ -28,6 +28,7 @@
 #include "../../utils/err.h"
 #include "../../utils/cont.h"
 #include "../../utils/attr.h"
+#include <stdio.h>
 
 #if defined NN_HAVE_WINDOWS
 #include "../../utils/win.h"
@@ -105,6 +106,7 @@ void nn_atcp_start (struct nn_atcp *self, struct nn_usock *listener)
 
 void nn_atcp_stop (struct nn_atcp *self)
 {
+    printf ("Nano: nn_atcp_stop\n");
     nn_fsm_stop (&self->fsm);
 }
 

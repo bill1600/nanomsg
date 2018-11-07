@@ -28,6 +28,7 @@
 #include "../../utils/fast.h"
 #include "../../utils/wire.h"
 #include "../../utils/attr.h"
+#include <stdio.h>
 
 /*  States of the object as a whole. */
 #define NN_STCP_STATE_IDLE 1
@@ -115,6 +116,7 @@ void nn_stcp_start (struct nn_stcp *self, struct nn_usock *usock)
 
 void nn_stcp_stop (struct nn_stcp *self)
 {
+    printf ("Nano: nn_stcp_stop\n");
     nn_fsm_stop (&self->fsm);
 }
 

@@ -33,6 +33,7 @@
 #include "../utils/attr.h"
 
 #include <string.h>
+#include <stdio.h>
 
 #define NN_EP_STATE_IDLE 1
 #define NN_EP_STATE_ACTIVE 2
@@ -97,6 +98,7 @@ void nn_ep_start (struct nn_ep *self)
 
 void nn_ep_stop (struct nn_ep *self)
 {
+    printf ("Nano: nn_ep_stop\n");
     nn_fsm_stop (&self->fsm);
 }
 

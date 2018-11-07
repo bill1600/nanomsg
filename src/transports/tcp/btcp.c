@@ -39,6 +39,7 @@
 #include "../../utils/fast.h"
 
 #include <string.h>
+#include <stdio.h>
 
 #if defined NN_HAVE_WINDOWS
 #include "../../utils/win.h"
@@ -172,6 +173,7 @@ static void nn_btcp_stop (void *self)
 {
     struct nn_btcp *btcp = self;
 
+    printf ("Nano: nn_btcp_stop\n");
     nn_fsm_stop (&btcp->fsm);
 }
 

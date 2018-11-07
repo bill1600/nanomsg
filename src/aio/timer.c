@@ -27,6 +27,7 @@
 #include "../utils/fast.h"
 #include "../utils/err.h"
 #include "../utils/attr.h"
+#include <stdio.h>
 
 /*  Timer state reflects the state as seen by the user thread. It says nothing
     about the state of affairs in the worker thread. */
@@ -84,6 +85,7 @@ void nn_timer_start (struct nn_timer *self, int timeout)
 
 void nn_timer_stop (struct nn_timer *self)
 {
+    printf ("Nano: nn_timer_stop\n");
     nn_fsm_stop (&self->fsm);
 }
 

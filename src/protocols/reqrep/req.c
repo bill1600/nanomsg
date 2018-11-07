@@ -39,6 +39,7 @@
 
 #include <stddef.h>
 #include <string.h>
+#include <stdio.h>
 
 /*  Default re-send interval is 1 minute. */
 #define NN_REQ_DEFAULT_RESEND_IVL 60000
@@ -117,6 +118,7 @@ void nn_req_stop (struct nn_sockbase *self)
 
     req = nn_cont (self, struct nn_req, xreq.sockbase);
 
+    printf ("Nano: nn_req_stop\n");    
     nn_fsm_stop (&req->fsm);
 }
 

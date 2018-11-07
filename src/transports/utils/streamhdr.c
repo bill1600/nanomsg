@@ -33,6 +33,7 @@
 
 #include <stddef.h>
 #include <string.h>
+#include <stdio.h>
 
 #define NN_STREAMHDR_STATE_IDLE 1
 #define NN_STREAMHDR_STATE_SENDING 2
@@ -109,6 +110,7 @@ void nn_streamhdr_start (struct nn_streamhdr *self, struct nn_usock *usock,
 
 void nn_streamhdr_stop (struct nn_streamhdr *self)
 {
+    printf ("Nano: nn_streamhdr_stop\n");
     nn_fsm_stop (&self->fsm);
 }
 
@@ -117,6 +119,7 @@ static void nn_streamhdr_shutdown (struct nn_fsm *self, int src, int type,
 {
     struct nn_streamhdr *streamhdr;
 
+    printf ("Nano: nn_streamhdr_shutdown\n");
     streamhdr = nn_cont (self, struct nn_streamhdr, fsm);
 
     if (nn_slow (src == NN_FSM_ACTION && type == NN_FSM_STOP)) {
@@ -166,6 +169,8 @@ static void nn_streamhdr_handler (struct nn_fsm *self, int src, int type,
             }
 
         default:
+            printf ("Nanomsg: Invalid SRC %d when NN_STREAMHDR_STATE_IDLE\n",
+                src);
             nn_fsm_bad_source (streamhdr->state, src, type);
         }
 

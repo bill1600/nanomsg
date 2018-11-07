@@ -42,6 +42,7 @@
 #include "../../utils/attr.h"
 
 #include <string.h>
+#include <stdio.h>
 
 #if defined NN_HAVE_WINDOWS
 #include "../../utils/win.h"
@@ -206,6 +207,7 @@ static void nn_ctcp_stop (void *self)
 {
     struct nn_ctcp *ctcp = self;
 
+    printf ("Nano: nn_ctcp_stop\n");
     nn_fsm_stop (&ctcp->fsm);
 }
 
